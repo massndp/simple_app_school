@@ -15,11 +15,11 @@ class CreateJadwalTable extends Migration
     {
         Schema::create('jadwal', function (Blueprint $table) {
             $table->id();
-            $table->bigIncrements('hari_id');
-            $table->bigIncrements('kelas_id');
-            $table->bigIncrements('mapel_id');
-            $table->bigIncrements('guru_id');
-            $table->bigIncrements('ruang_id');
+            $table->bigInteger('hari_id');
+            $table->bigInteger('kelas_id');
+            $table->bigInteger('mapel_id');
+            $table->bigInteger('guru_id');
+            $table->bigInteger('ruang_id');
             $table->time('jam_mulai');
             $table->time('jam_selesai');
             $table->timestamps();
