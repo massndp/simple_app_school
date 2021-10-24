@@ -17,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'ConfirmController@index');
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
+Route::prefix('admin')->group(function () {
+    Route::post('mapel/datatable', 'Master\MapelController@datatable');
+    Route::resource('mapel', 'Master\MapelController');
+});
 
-Route::get('/home', 'HomeController@index')->name('home');
+Auth::routes();
