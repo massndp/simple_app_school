@@ -104,7 +104,7 @@ class MapelController extends Controller
      */
     public function destroy($id)
     {
-        Mapel::find($id)->delete();
+        $mapel = Mapel::findOrFail($id)->delete();
 
         return redirect()->route('mapel.index')->with('success', 'Data mapel berhasil dihapus');
     }
@@ -116,7 +116,7 @@ class MapelController extends Controller
         ->addColumn('actions', function($row){
             $editUrl = route('mapel.edit', $row->id);
             return "<a class='btn btn-info btn-sm' href='$editUrl'><i class='fas  fa-pencil-alt'></i></a>
-            <button class='btn btn-sm btn-danger deleteModals my-2 ml-1' type='button' data-mediceneid='$row->id' data-toggle='modal' data-target='#modalDelete'><i class='fa fa-trash'></i></button";
+            <button class='btn btn-sm btn-danger deleteModals my-2 ml-1' type='button' data-mapelid='$row->id' data-toggle='modal' data-target='#modalDelete'><i class='fa fa-trash'></i></button";
         })
         ->rawColumns(['actions'])
         ->make(true);

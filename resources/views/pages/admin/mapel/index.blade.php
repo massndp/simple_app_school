@@ -60,6 +60,7 @@
             </div>
         </div>
      </div>
+     @include('pages.admin.partials.modal-delete')
 </div>
 @stop
 
@@ -96,6 +97,11 @@
                 ]
             });
             table.order([ 0, 'desc' ]).draw();
+        });
+
+        $('#modalDelete').on('show.bs.modal',function(e){
+            var mapelid = $(e.relatedTarget).data('mapelid');
+            $('#formDeleteModal').attr('action','/admin/mapel/'+mapelid);
         });
 
         setTimeout(() => {
