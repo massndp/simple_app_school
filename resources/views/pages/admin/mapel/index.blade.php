@@ -49,9 +49,14 @@
              <table class="table table-hover table-bordered" id="mapel">
                  <thead>
                      <tr>
-                         <th>Nama</th>
-                         <th>Username</th>
+                         <th>Kode</th>
+                         <th>Mapel</th>
                          <th>action</th>
+                     </tr>
+                     <tr>
+                         <th></th>
+                         <th><input type="text" data-column="1" class="input-filter dt-searcher form-control" placeholder="Search ..." style="width: 400px"></th>
+                         <th></th>
                      </tr>
                  </thead>
                  <tbody>
@@ -92,11 +97,17 @@
                 },
                 columns: [
                     {data: 'kode', name: 'kode'},
-                    {data: 'nama', name: 'nama'},
+                    {data: 'nama', name: 'nama', orderable:false},
                     {data: 'actions', name: 'actions', searchable:false}
                 ]
             });
             table.order([ 0, 'desc' ]).draw();
+
+            $('.input-filter').change(function(){
+                table.column($(this).data('column'))
+                .search($(this).val())
+                .draw();
+            });
         });
 
         $('#modalDelete').on('show.bs.modal',function(e){
